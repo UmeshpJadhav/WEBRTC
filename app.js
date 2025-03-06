@@ -7,7 +7,6 @@ const path = require('path');
 const server = http.createServer(app);
 const io = socketIo(server);
 
-// Use environment variable for port or default to 3000
 const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');

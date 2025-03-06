@@ -72,13 +72,13 @@ body {
         grid-template-columns: 1fr;
         padding: 1rem;
     }
-
+    
     .control-container {
         width: 40px;
         height: 40px;
     }
-
+    
     #controls {
         bottom: 1rem;
     }
-} 
+}

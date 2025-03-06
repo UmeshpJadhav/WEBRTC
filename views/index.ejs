@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1-on-1 Video Call</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-
 <body>
     <div id="videos">
         <video class="video-player" id="localVideo" autoplay muted playsinline></video>
         <video class="video-player" id="remoteVideo" autoplay playsinline></video>
     </div>
-
+    
     <div id="controls">
         <div class="control-container" id="cameraButton">
             <svg width="21" height="14" viewBox="0 0 21 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,7 +20,7 @@
                     fill="white" />
             </svg>
         </div>
-
+        
         <div class="control-container" id="micButton">
             <svg width="20" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -31,9 +29,8 @@
             </svg>
         </div>
     </div>
-
+    
     <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
     <script src="/js/script.js"></script>
 </body>
-
 </html>

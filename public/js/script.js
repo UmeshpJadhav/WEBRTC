@@ -18,6 +18,12 @@ const rtcSettings = {
 
 const initialize = async () => {
   socket.on("signalingMessage", handleSignalingMessage);
+
+  socket.on("hangup", () => {
+    console.log("Hangup event received. Redirecting...");
+    window.location.href = "https://omegle-smgn.vercel.app/";
+  });
+  
   
   local = await navigator.mediaDevices.getUserMedia({
     audio: true,
@@ -130,31 +136,32 @@ const hangup = () => {
   if (local) {
     local.getTracks().forEach(track => track.stop());
   }
-
+  
   
   if (peerConnection) {
     peerConnection.close();
     peerConnection = null;
   }
-
+  
   
   if (remote) {
     remote.getTracks().forEach(track => track.stop());
   }
-
- 
+  
+  
   document.querySelector("#localVideo").srcObject = null;
   document.querySelector("#remoteVideo").srcObject = null;
-
   
+ 
   socket.emit("hangup");
-
-  console.log("Call ended. Hangup complete.");
-
+  
+  console.log("Hangup initiated. Redirecting local client...");
+  
   
   window.location.href = "https://omegle-smgn.vercel.app/";
 };
 
-
-
 initialize();
+
+
+

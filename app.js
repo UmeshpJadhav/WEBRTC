@@ -24,12 +24,11 @@ io.on('connection', (socket) => {
     });
 
 
-    socket.on("hangup", (message) => {
+    socket.on("hangup", () => {
         console.log(`Hangup received from ${socket.id}`);
-        // Broadcast the hangup event to other clients.
-        socket.broadcast.emit("hangup", message);
-    });
-
+        io.emit("hangup");
+      });
+    
 
     
     socket.on('disconnect', () => {

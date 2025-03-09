@@ -7,7 +7,7 @@ const path = require('path');
 const server = http.createServer(app);
 const io = socketIo(server);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, "public")));
@@ -22,6 +22,15 @@ io.on('connection', (socket) => {
     socket.on("signalingMessage", (message) => {
         socket.broadcast.emit("signalingMessage", message);
     });
+
+
+    socket.on("hangup", (message) => {
+        console.log(`Hangup received from ${socket.id}`);
+        // Broadcast the hangup event to other clients.
+        socket.broadcast.emit("hangup", message);
+    });
+
+
     
     socket.on('disconnect', () => {
         console.log('User disconnected');

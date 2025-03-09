@@ -118,6 +118,43 @@ const setupControlButtons = () => {
       micButton.classList.toggle("active", !audioTrack.enabled);
     }
   });
+
+
+  hangupButton.addEventListener("click", hangup);
+
 };
+
+
+const hangup = () => {
+ 
+  if (local) {
+    local.getTracks().forEach(track => track.stop());
+  }
+
+  
+  if (peerConnection) {
+    peerConnection.close();
+    peerConnection = null;
+  }
+
+  
+  if (remote) {
+    remote.getTracks().forEach(track => track.stop());
+  }
+
+ 
+  document.querySelector("#localVideo").srcObject = null;
+  document.querySelector("#remoteVideo").srcObject = null;
+
+  
+  socket.emit("hangup");
+
+  console.log("Call ended. Hangup complete.");
+
+  
+  window.location.href = "https://omegle-smgn.vercel.app/";
+};
+
+
 
 initialize();
